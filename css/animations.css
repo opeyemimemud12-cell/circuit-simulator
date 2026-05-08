@@ -1,0 +1,450 @@
+/* Animations and Transitions */
+
+/* Slide animations */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+}
+
+/* Fade animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/* Pulse animation */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Scale pulse */
+@keyframes scalePulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Rotate animation */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Spin loader */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Glow animation */
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(37, 99, 235, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(37, 99, 235, 0.8);
+    }
+}
+
+/* Bounce animation */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Shake animation for errors */
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+    }
+}
+
+/* Swing animation */
+@keyframes swing {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(5deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(-5deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+/* Heartbeat animation */
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(1.3);
+    }
+    50% {
+        transform: scale(1);
+    }
+}
+
+/* Flash animation */
+@keyframes flash {
+    0%, 50%, 100% {
+        opacity: 1;
+    }
+    25%, 75% {
+        opacity: 0;
+    }
+}
+
+/* Wiggle animation */
+@keyframes wiggle {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    15% {
+        transform: rotate(-3deg);
+    }
+    30%, 70% {
+        transform: rotate(3deg);
+    }
+    45%, 55% {
+        transform: rotate(-3deg);
+    }
+}
+
+/* Slide and fade animations for UI elements */
+.modal {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+    animation: slideUp 0.3s ease-out;
+}
+
+.toast {
+    animation: slideInRight 0.3s ease-out;
+}
+
+.toast.exit {
+    animation: slideOutRight 0.3s ease-out forwards;
+}
+
+/* Navbar entrance */
+.navbar {
+    animation: slideDown 0.4s ease-out;
+}
+
+/* Sidebar entrance */
+.sidebar {
+    animation: slideInLeft 0.4s ease-out;
+}
+
+/* Property panel entrance */
+.property-panel:not(.hidden) {
+    animation: slideInRight 0.3s ease-out;
+}
+
+/* Component placement animation */
+.component.placing {
+    animation: scalePulse 0.6s ease-out infinite;
+}
+
+/* Component selection glow */
+.component.selected {
+    animation: glow 2s ease-in-out infinite;
+}
+
+/* LED animation when on */
+.led.lit {
+    animation: heartbeat 0.6s ease-in-out infinite;
+}
+
+/* Active component pulse */
+.component.active {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Error shake animation */
+.has-error {
+    animation: shake 0.5s ease-in-out;
+}
+
+/* Loading spinner */
+.spinner {
+    animation: spin 1s linear infinite;
+}
+
+/* Button hover effects */
+.btn-primary:hover {
+    animation: none;
+}
+
+.btn-primary:active {
+    animation: none;
+}
+
+/* Tooltip fade in */
+.component-tooltip {
+    animation: fadeIn 0.2s ease-out;
+}
+
+/* Wire drawing animation */
+.wire-drawing {
+    animation: dashMove 0.5s linear infinite;
+}
+
+@keyframes dashMove {
+    to {
+        stroke-dashoffset: -10px;
+    }
+}
+
+/* Connection point pulse */
+.connection-point:hover {
+    animation: scalePulse 0.6s ease-out infinite;
+}
+
+/* Simulation start effect */
+.simulation-running {
+    animation: pulse 0.8s ease-in-out infinite;
+}
+
+/* Component value change highlight */
+.value-updated {
+    animation: flash 0.6s ease-in-out;
+}
+
+/* Success check mark animation */
+@keyframes checkmark {
+    0% {
+        stroke-dashoffset: 50;
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        stroke-dashoffset: 0;
+        opacity: 1;
+    }
+}
+
+.checkmark {
+    animation: checkmark 0.6s ease-out;
+}
+
+/* Cross mark animation for errors */
+@keyframes crossmark {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.crossmark {
+    animation: crossmark 0.4s ease-out;
+}
+
+/* Timeline animation */
+.timeline-item {
+    animation: slideUp 0.6s ease-out backwards;
+}
+
+.timeline-item:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.timeline-item:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.timeline-item:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.timeline-item:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+.timeline-item:nth-child(5) {
+    animation-delay: 0.4s;
+}
+
+.timeline-item:nth-child(n+6) {
+    animation-delay: 0.5s;
+}
+
+/* Component card hover animation */
+.component-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.component-card:hover {
+    animation: none;
+}
+
+/* Smooth transitions */
+* {
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Disable animations on reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Performance optimizations */
+@media (prefers-reduced-motion: no-preference) {
+    .will-animate {
+        will-change: transform, opacity;
+    }
+}
+
+/* Parallax effect for background */
+@keyframes parallaxMove {
+    0% {
+        transform: translateZ(0);
+    }
+    100% {
+        transform: translateZ(50px);
+    }
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Input focus effect */
+input:focus,
+textarea:focus,
+select:focus {
+    animation: glow 0.4s ease-out;
+}
+
+/* Button press effect */
+button:active {
+    transform: scale(0.98);
+}
+
+/* Hover lift effect */
+.hoverable {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hoverable:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Smooth color transitions for theme switching */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body * {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
