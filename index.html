@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CircuitLab - Interactive Circuit Simulator</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header Navigation -->
+        <header class="navbar">
+            <div class="navbar-content">
+                <div class="logo">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                        <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2"/>
+                        <path d="M20 8V32M8 20H32" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    <span>CircuitLab</span>
+                </div>
+                <nav class="nav-menu">
+                    <button class="nav-btn active" data-section="simulator">Simulator</button>
+                    <button class="nav-btn" data-section="history">Robotics History</button>
+                    <button class="nav-btn" data-section="components">Components</button>
+                    <button class="nav-btn" data-section="tutorials">Tutorials</button>
+                </nav>
+                <div class="nav-actions">
+                    <button class="btn-icon" id="theme-toggle" title="Toggle Dark Mode">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+                        </svg>
+                    </button>
+                    <button class="btn-primary" id="save-circuit">Save Circuit</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Sidebar: Component Palette -->
+            <aside class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Basic Components</h3>
+                    <div class="component-palette">
+                        <div class="draggable-component" data-component="resistor" title="Resistor">
+                            <svg viewBox="0 0 60 20" class="component-icon">
+                                <line x1="5" y1="10" x2="15" y2="10" stroke="currentColor" stroke-width="2"/>
+                                <rect x="15" y="6" width="30" height="8" stroke="currentColor" stroke-width="2" fill="none"/>
+                                <line x1="45" y1="10" x2="55" y2="10" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <span>Resistor</span>
+                        </div>
+
+                        <div class="draggable-component" data-component="capacitor" title="Capacitor">
+                            <svg viewBox="0 0 60 20" class="component-icon">
+                                <line x1="5" y1="10" x2="20" y2="10" stroke="currentColor" stroke-width="2"/>
+                                <line x1="20" y1="5" x2="20" y2="15" stroke="currentColor" stroke-width="2"/>
+                                <line x1="25" y1="5" x2="25" y2="15" stroke="currentColor" stroke-width="2"/>
+                                <line x1="25" y1="10" x2="55" y2="10" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <span>Capacitor</span>
+                        </div>
+
+                        <div class="draggable-component" data-component="led" title="LED">
+                            <svg viewBox="0 0 60 20" class="component-icon">
+                                <circle cx="30" cy="10" r="8" stroke="currentColor" stroke-width="2" fill="none"/>
+                                <circle cx="30" cy="10" r="4" fill="currentColor" opacity="0.3"/>
+                            </svg>
+                            <span>LED</span>
+                        </div>
+
+                        <div class="draggable-component" data-component="battery" title="Battery">
+                            <svg viewBox="0 0 60 20" class="component-icon">
+                                <rect x="20" y="4" width="20" height="12" stroke="currentColor" stroke-width="2" fill="none"/>
+                                <line x1="15" y1="6" x2="15" y2="14" stroke="currentColor" stroke-width="2"/>
+                                <line x1="13" y1="8" x2="13" y2="12" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <span>Battery</span>
+                        </div>
+
+                        <div class="draggable-component" data-component="switch" title="Switch">
+                            <svg viewBox="0 0 60 20" class="component-icon">
+                                <line x1="5" y1="10" x2="20" y2="10" stroke="currentColor" stroke-width="2"/>
+                                <line x1="20" y1="10" x2="35" y2="5" stroke="currentColor" stroke-width="2"/>
+                                <line x1="35" y1="15" x2="55" y2="15" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <span>Switch</span>
+                        </div>
+
+                        <div class="draggable-component" data-component="wire" title="Wire">
+                            <svg viewBox="0 0 60 20" class="component-icon">
+                                <path d="M5 10 Q 15 5, 30 10 T 55 10" stroke="currentColor" stroke-width="2" fill="none"/>
+                            </svg>
+                            <span>Wire</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Arduino & Boards</h3>
+                    <div class="component-palette">
+                        <div class="draggable-component" data-component="arduino-uno" title="Arduino UNO">
+                            <svg viewBox="0 0 60 40" class="component-icon">
+                                <rect x="5" y="5" width="50" height="30" stroke="currentColor" stroke-width="2" fill="none" rx="2"/>
+                                <circle cx="12" cy="12" r="2" fill="currentColor"/>
+                                <circle cx="12" cy="20" r="2" fill="currentColor"/>
+                                <circle cx="12" cy="28" r="2" fill="currentColor"/>
+                                <circle cx="48" cy="12" r="2" fill="currentColor"/>
+                                <circle cx="48" cy="20" r="2" fill="currentColor"/>
+                                <circle cx="48" cy="28" r="2" fill="currentColor"/>
+                            </svg>
+                            <span>Arduino UNO</span>
+                        </div>
+
+                        <div class="draggable-component" data-component="breadboard" title="Breadboard">
+                            <svg viewBox="0 0 60 40" class="component-icon">
+                                <rect x="5" y="5" width="50" height="30" stroke="currentColor" stroke-width="2" fill="none" rx="2"/>
+                                <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+                                <circle cx="20" cy="12" r="1.5" fill="currentColor"/>
+                                <circle cx="28" cy="12" r="1.5" fill="currentColor"/>
+                                <circle cx="36" cy="12" r="1.5" fill="currentColor"/>
+                                <circle cx="44" cy="12" r="1.5" fill="currentColor"/>
+                                <circle cx="52" cy="12" r="1.5" fill="currentColor"/>
+                                <circle cx="12" cy="28" r="1.5" fill="currentColor"/>
+                                <circle cx="20" cy="28" r="1.5" fill="currentColor"/>
+                                <circle cx="28" cy="28" r="1.5" fill="currentColor"/>
+                                <circle cx="36" cy="28" r="1.5" fill="currentColor"/>
+                                <circle cx="44" cy="28" r="1.5" fill="currentColor"/>
+                                <circle cx="52" cy="28" r="1.5" fill="currentColor"/>
+                            </svg>
+                            <span>Breadboard</span>
+                        </div>
+
+                        <div class="draggable-component" data-component="servo" title="Servo Motor">
+                            <svg viewBox="0 0 60 40" class="component-icon">
+                                <rect x="10" y="8" width="40" height="24" stroke="currentColor" stroke-width="2" fill="none" rx="2"/>
+                                <circle cx="30" cy="20" r="6" stroke="currentColor" stroke-width="2" fill="none"/>
+                                <line x1="30" y1="20" x2="30" y2="12" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <span>Servo Motor</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Sensors</h3>
+                    <div class="component-palette">
+                        <div class="draggable-component" data-component="temp-sensor" title="Temperature Sensor">
+                            <svg viewBox="0 0 60 40" class="component-icon">
+                                <circle cx="30" cy="15" r="8" stroke="currentColor" stroke-width="2" fill="none"/>
+                                <line x1="30" y1="23" x2="30" y2="35" stroke="currentColor" stroke-width="2"/>
+                                <rect x="27" y="30" width="6" height="5" stroke="currentColor" stroke-width="1" fill="none"/>
+                            </svg>
+                            <span>Temp Sensor</span>
+                        </div>
+
+                        <div class="draggable-component" data-component="distance-sensor" title="Ultrasonic Sensor">
+                            <svg viewBox="0 0 60 40" class="component-icon">
+                                <circle cx="15" cy="20" r="4" stroke="currentColor" stroke-width="2" fill="none"/>
+                                <circle cx="45" cy="20" r="4" stroke="currentColor" stroke-width="2" fill="none"/>
+                                <path d="M20 15 Q 30 10, 40 15" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                <path d="M20 25 Q 30 30, 40 25" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                            </svg>
+                            <span>Ultrasonic</span>
+                        </div>
+
+                        <div class="draggable-component" data-component="motion-sensor" title="Motion Sensor">
+                            <svg viewBox="0 0 60 40" class="component-icon">
+                                <rect x="10" y="10" width="40" height="20" stroke="currentColor" stroke-width="2" fill="none" rx="3"/>
+                                <circle cx="25" cy="20" r="3" fill="currentColor"/>
+                                <circle cx="35" cy="20" r="3" fill="currentColor"/>
+                            </svg>
+                            <span>Motion Sensor</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Tools</h3>
+                    <button class="btn-block" id="clear-canvas">Clear Canvas</button>
+                    <button class="btn-block" id="run-simulation">Run Simulation</button>
+                    <button class="btn-block" id="stop-simulation">Stop Simulation</button>
+                </div>
+            </aside>
+
+            <!-- Main Canvas Area -->
+            <main class="workspace">
+                <!-- Canvas Section -->
+                <section class="canvas-section" id="simulator">
+                    <div class="canvas-header">
+                        <div class="canvas-tools">
+                            <button class="tool-btn active" id="tool-select" title="Select Tool">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm10 0h8v8h-8v-8z"/></svg>
+                            </button>
+                            <button class="tool-btn" id="tool-wire" title="Wire Tool">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h7m4 0h7M9 9v6m6-6v6"/></svg>
+                            </button>
+                            <button class="tool-btn" id="tool-delete" title="Delete Tool">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-9l-1 1H5v2h14V4z"/></svg>
+                            </button>
+                        </div>
+                        <div class="canvas-info">
+                            <span id="voltage-display">Voltage: 0V</span>
+                            <span id="current-display">Current: 0mA</span>
+                            <span id="power-display">Power: 0W</span>
+                        </div>
+                    </div>
+                    <canvas id="circuit-canvas"></canvas>
+                    <div class="canvas-footer">
+                        <button class="btn-secondary" id="zoom-in">Zoom In</button>
+                        <span id="zoom-level">100%</span>
+                        <button class="btn-secondary" id="zoom-out">Zoom Out</button>
+                    </div>
+                </section>
+
+                <!-- History Section -->
+                <section class="history-section hidden" id="history">
+                    <div class="history-container">
+                        <h2>Robotics & Electronics History Timeline</h2>
+                        <div class="timeline">
+                            <!-- Timeline items will be populated by JS -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Components Reference Section -->
+                <section class="components-section hidden" id="components">
+                    <div class="components-container">
+                        <h2>Component Library & Specifications</h2>
+                        <div class="components-grid">
+                            <!-- Components reference will be populated by JS -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Tutorials Section -->
+                <section class="tutorials-section hidden" id="tutorials">
+                    <div class="tutorials-container">
+                        <h2>Interactive Tutorials</h2>
+                        <div class="tutorials-grid">
+                            <!-- Tutorials will be populated by JS -->
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <!-- Property Panel -->
+        <aside class="property-panel hidden">
+            <div class="property-header">
+                <h3>Component Properties</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="property-content">
+                <!-- Properties will be populated dynamically -->
+            </div>
+        </aside>
+
+        <!-- Modal: Simulation Results -->
+        <div class="modal hidden" id="results-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Simulation Results</h2>
+                    <button class="close-btn">&times;</button>
+                </div>
+                <div class="modal-body" id="results-content">
+                    <!-- Results will be populated -->
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-primary" id="close-results">Close</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast Notifications -->
+        <div class="toast-container" id="toast-container"></div>
+    </div>
+
+    <!-- Audio Context for Sounds -->
+    <audio id="success-sound" preload="auto"></audio>
+    <audio id="error-sound" preload="auto"></audio>
+    <audio id="click-sound" preload="auto"></audio>
+
+    <!-- Scripts -->
+    <script src="js/utils.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/circuit.js"></script>
+    <script src="js/simulator.js"></script>
+    <script src="js/history.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
